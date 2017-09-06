@@ -6,9 +6,9 @@
  * @see         https://github.com/simply-coded/electron-navigation
  * @tutorial
  *  Add these IDs to your html (containers don't have to be divs).
- *      <div id='nav-body-ctrls'></div>     
+ *      <div id='nav-body-ctrls'></div>
  *      <div id='nav-body-tabs'></div>
- *      <div id='nav-body-views'></div>       
+ *      <div id='nav-body-views'></div>
  *  Add these scripts to your html (at the end of the body tag).
  *      <script>
  *          const enav = new (require('electron-navigation'))()
@@ -85,9 +85,9 @@ function Navigation(options) {
      * ADD CORE STYLE
      */
     if (options.verticalTabs) {
-        $('head').append('<style id="nav-core-styles">#nav-body-ctrls,#nav-body-tabs,#nav-body-views,.nav-tabs-tab{display:flex;align-items:center;}#nav-body-tabs{overflow:auto;min-height:32px;flex-direction:column;}#nav-ctrls-url{box-sizing:border-box;}.nav-tabs-tab{min-width:60px;width:100%;min-height:20px;}.nav-icons{fill:#000;width:24px;height:24px}.nav-icons.disabled{pointer-events:none;opacity:.5}#nav-ctrls-url{flex:1;height:24px}.nav-views-view{flex:0 1;width:0;height:0}.nav-views-view.active{flex:1;width:100%;height:100%}.nav-tabs-favicon{align-content:flex-start}.nav-tabs-title{flex:1;cursor:default;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nav-tabs-close{align-content:flex-end}@keyframes nav-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>')
+        $('head').prepend('<style id="nav-core-styles">#nav-body-ctrls,#nav-body-tabs,#nav-body-views,.nav-tabs-tab{display:flex;align-items:center;}#nav-body-tabs{overflow:auto;min-height:32px;flex-direction:column;}#nav-ctrls-url{box-sizing:border-box;}.nav-tabs-tab{min-width:60px;width:100%;min-height:20px;}.nav-icons{fill:#000;width:24px;height:24px}.nav-icons.disabled{pointer-events:none;opacity:.5}#nav-ctrls-url{flex:1;height:24px}.nav-views-view{flex:0 1;width:0;height:0}.nav-views-view.active{flex:1;width:100%;height:100%}.nav-tabs-favicon{align-content:flex-start}.nav-tabs-title{flex:1;cursor:default;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nav-tabs-close{align-content:flex-end}@keyframes nav-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>')
     } else {
-        $('head').append('<style id="nav-core-styles">#nav-body-ctrls,#nav-body-tabs,#nav-body-views,.nav-tabs-tab{display:flex;align-items:center}#nav-body-tabs{overflow:auto;min-height:32px;}#nav-ctrls-url{box-sizing:border-box;}.nav-tabs-tab{min-width:60px;width:180px;min-height:20px;}.nav-icons{fill:#000;width:24px;height:24px}.nav-icons.disabled{pointer-events:none;opacity:.5}#nav-ctrls-url{flex:1;height:24px}.nav-views-view{flex:0 1;width:0;height:0}.nav-views-view.active{flex:1;width:100%;height:100%}.nav-tabs-favicon{align-content:flex-start}.nav-tabs-title{flex:1;cursor:default;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nav-tabs-close{align-content:flex-end}@keyframes nav-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>')
+        $('head').prepend('<style id="nav-core-styles">#nav-body-ctrls,#nav-body-tabs,#nav-body-views,.nav-tabs-tab{display:flex;align-items:center}#nav-body-tabs{overflow:auto;min-height:32px;}#nav-ctrls-url{box-sizing:border-box;}.nav-tabs-tab{min-width:60px;width:180px;min-height:20px;}.nav-icons{fill:#000;width:24px;height:24px}.nav-icons.disabled{pointer-events:none;opacity:.5}#nav-ctrls-url{flex:1;height:24px}.nav-views-view{flex:0 1;width:0;height:0}.nav-views-view.active{flex:1;width:100%;height:100%}.nav-tabs-favicon{align-content:flex-start}.nav-tabs-title{flex:1;cursor:default;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nav-tabs-close{align-content:flex-end}@keyframes nav-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>')
     }
     /**
      * EVENTS
@@ -188,8 +188,8 @@ function Navigation(options) {
             }
         }
     })
-    /** 
-     * FUNCTIONS 
+    /**
+     * FUNCTIONS
      */
     //
     // update back and forward buttons
@@ -306,7 +306,7 @@ Navigation.prototype.newTab = function (url, options) {
         node: false, // true, false
         icon: "clean", // 'default', 'clean', 'c:\custom.png'
         title: "default", // 'default', 'custom'
-        close: true // true, false        
+        close: true // true, false
     }
     if (options === 'undefined' || options === 'null' || options !== Object(options)) {
         options = {}
@@ -326,7 +326,7 @@ Navigation.prototype.newTab = function (url, options) {
         console.log('ERROR[electron-navigation][func "newTab();"]: The ID "' + options.id + '" is not valid. Please use another one.')
         return false
     }
-    // build tab    
+    // build tab
     var tab = '<span class="nav-tabs-tab active" data-session="' + this.SESSION_ID + '">'
     // favicon
     if (options.icon == 'clean') {
@@ -368,7 +368,7 @@ Navigation.prototype.newTab = function (url, options) {
             $('#nav-body-views').append('<webview id="' + options.id + '" class="nav-views-view active" data-session="' + this.SESSION_ID + '" src="' + this._purifyUrl(url) + '"></webview>')
         }
     }
-    return this._addEvents(this.SESSION_ID++, options.icon, options.title)    
+    return this._addEvents(this.SESSION_ID++, options.icon, options.title)
 } //:newTab()
 //
 // change current or specified tab and view
@@ -476,44 +476,44 @@ Navigation.prototype.stop = function (id) {
 //
 // listen for a message from webview
 //
-Navigation.prototype.listen = function (id, callback) {    
+Navigation.prototype.listen = function (id, callback) {
     let webview = null
 
     //check id
     if ($('#' + id).length) {
         webview = document.getElementById(id)
-    } else {            
+    } else {
         console.log('ERROR[electron-navigation][func "listen();"]: Cannot find the ID "' + id + '"')
     }
-    
+
     // listen for message
     if (webview != null) {
         try {
-            webview.addEventListener('ipc-message', (event) => {                    
+            webview.addEventListener('ipc-message', (event) => {
                 callback(event.channel, event.args, webview);
             })
         } catch (e) {
             webview.addEventListener("dom-ready", function (event) {
-                webview.addEventListener('ipc-message', (event) => {                    
+                webview.addEventListener('ipc-message', (event) => {
                     callback(event.channel, event.args, webview);
-                })             
+                })
             })
-        }        
-    } 
+        }
+    }
 } //:listen()
 //
 // send message to webview
 //
-Navigation.prototype.send = function (id, channel, args) {    
+Navigation.prototype.send = function (id, channel, args) {
     let webview = null
 
     // check id
     if ($('#' + id).length) {
         webview = document.getElementById(id)
-    } else {            
+    } else {
         console.log('ERROR[electron-navigation][func "send();"]: Cannot find the ID "' + id + '"')
     }
-    
+
     // send a message
     if (webview != null) {
         try {
@@ -522,8 +522,8 @@ Navigation.prototype.send = function (id, channel, args) {
             webview.addEventListener("dom-ready", function (event) {
                 webview.send(channel, args)
             })
-        }        
-    } 
+        }
+    }
 } //:send()
 //
 // open developer tools of current or ID'd webview
@@ -538,11 +538,11 @@ Navigation.prototype.openDevTools = function(id) {
     } else {
         if ($('#' + id).length) {
             webview = document.getElementById(id)
-        } else {            
+        } else {
             console.log('ERROR[electron-navigation][func "openDevTools();"]: Cannot find the ID "' + id + '"')
         }
     }
-    
+
     // open dev tools
     if (webview != null) {
         try {
@@ -551,10 +551,10 @@ Navigation.prototype.openDevTools = function(id) {
             webview.addEventListener("dom-ready", function (event) {
                 webview.openDevTools()
             })
-        }        
-    }    
+        }
+    }
 } //:openDevTools()
 /**
- * MODULE EXPORTS 
+ * MODULE EXPORTS
  */
 module.exports = Navigation
